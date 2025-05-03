@@ -1,0 +1,13 @@
+{
+  "name": "joy-of-react",
+  "version": "1.0.0",
+  "description": "Projects from the Joy of React course",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0"
+}
