@@ -9,9 +9,11 @@ function Guess({ guesses }) {
         return (
           <p key={i} className="guess">
             {range(5).map((_, j) => {
+              const slot = guesses[i] && guesses[i][j];
+
               return (
-                <span key={j} className="cell">
-                  {guesses[i] && guesses[i][j]}
+                <span key={j} className={`cell ${slot?.status}`}>
+                  {slot?.letter}
                 </span>
               );
             })}

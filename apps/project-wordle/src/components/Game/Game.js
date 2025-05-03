@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Guess from '../Guess/Guess';
+import { checkGuess } from '../../game-helpers';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
@@ -27,7 +28,7 @@ function Game() {
 
           const newGuesses = [...guesses];
 
-          newGuesses[guesses.length] = guessInput;
+          newGuesses[guesses.length] = checkGuess(guessInput, answer);
 
           setGuesses(newGuesses);
           setGuessInput('');
