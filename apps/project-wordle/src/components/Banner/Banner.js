@@ -24,7 +24,7 @@ function Banner({ hasWon, onRestart, tries }) {
         Sorry, the correct answer is <strong>LEARN</strong>.
       </p>
       <button className="reset-button" onClick={onRestart}>
-        Restart Button
+        Restart Game
       </button>
     </div>
   );
