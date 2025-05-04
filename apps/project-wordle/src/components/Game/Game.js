@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Guess from '../Guess/Guess';
 import Banner from '../Banner/Banner';
 import { checkGuess } from '../../game-helpers';
@@ -6,18 +6,22 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-
 function Game() {
+  const [answer, setAnswer] = useState(() => sample(WORDS));
   const [guesses, setGuesses] = useState([]);
   const [guessInput, setGuessInput] = useState('');
   const hasWon =
     guesses.length > 0 &&
     guesses[guesses.length - 1].map((a) => a.letter).join('') ===
       answer;
+
+  // To make debugging easier, we'll log the solution in the console.
+  console.info({ answer });
+
+  const onRestart = useCallback(() => {
+    setGuesses([]);
+    setAnswer(sample(WORDS));
+  }, []);
 
   return (
     <div>
@@ -60,7 +64,11 @@ function Game() {
         />
       </form>
       {(guesses.length === NUM_OF_GUESSES_ALLOWED || hasWon) && (
-        <Banner hasWon={hasWon} />
+        <Banner
+          hasWon={hasWon}
+          onRestart={onRestart}
+          tries={guesses.length}
+        />
       )}
     </div>
   );
