@@ -185,6 +185,12 @@ h1 {
   color: white;
 }
 
+.reset-button {
+  border-radius: 2rem;
+  border: 1px solid #ffffff;
+  padding: 0.5rem 1rem;
+}
+
 .visually-hidden {
   position: absolute;
   overflow: hidden;
