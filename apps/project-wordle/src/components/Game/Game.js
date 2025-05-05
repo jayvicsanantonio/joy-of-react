@@ -23,7 +23,7 @@ function Game() {
   }, []);
 
   return (
-    <div>
+    <div className="game-container">
       <Guess guesses={guesses} />
       <FormInput
         hasWon={hasWon}
