@@ -40,12 +40,13 @@ function Game() {
           }
 
           const newGuesses = [...guesses];
-
           newGuesses[guesses.length] = checkGuess(guessInput, answer);
 
           setGuesses(newGuesses);
           setGuessInput('');
         }}
+        aria-label="Word guess input form"
+        autoComplete="off"
       >
         <label htmlFor="guess-input">Enter guess:</label>
         <input
@@ -54,6 +55,9 @@ function Game() {
           type="text"
           minLength={5}
           maxLength={5}
+          pattern="[A-Za-z]{5}"
+          autoFocus
+          required
           disabled={
             guesses.length === NUM_OF_GUESSES_ALLOWED || hasWon
           }
@@ -61,6 +65,7 @@ function Game() {
           onChange={(event) =>
             setGuessInput(event.target.value.toUpperCase())
           }
+          aria-label="Enter your 5-letter guess"
         />
       </form>
       {(guesses.length === NUM_OF_GUESSES_ALLOWED || hasWon) && (
@@ -68,6 +73,7 @@ function Game() {
           hasWon={hasWon}
           onRestart={onRestart}
           tries={guesses.length}
+          answer={answer}
         />
       )}
     </div>

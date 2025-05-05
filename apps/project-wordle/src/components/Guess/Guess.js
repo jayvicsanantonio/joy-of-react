@@ -1,27 +1,16 @@
-import React from 'react';
+import { memo } from 'react';
 import { range } from '../../utils';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import GuessRow from './GuessRow';
 
 function Guess({ guesses }) {
   return (
     <div className="guess-results">
-      {range(NUM_OF_GUESSES_ALLOWED).map((_, i) => {
-        return (
-          <p key={i} className="guess">
-            {range(5).map((_, j) => {
-              const slot = guesses[i] && guesses[i][j];
-
-              return (
-                <span key={j} className={`cell ${slot?.status}`}>
-                  {slot?.letter}
-                </span>
-              );
-            })}
-          </p>
-        );
-      })}
+      {range(NUM_OF_GUESSES_ALLOWED).map((_, i) => (
+        <GuessRow key={i} slots={guesses[i]} />
+      ))}
     </div>
   );
 }
 
-export default Guess;
+export default memo(Guess);

@@ -1,6 +1,6 @@
-import React from 'react';
+import { memo } from 'react';
 
-function Banner({ hasWon, onRestart, tries }) {
+function Banner({ hasWon, onRestart, tries, answer }) {
   if (hasWon) {
     return (
       <div className="happy banner">
@@ -11,7 +11,11 @@ function Banner({ hasWon, onRestart, tries }) {
           </strong>
           .
         </p>
-        <button className="reset-button" onClick={onRestart}>
+        <button
+          className="reset-button"
+          onClick={onRestart}
+          aria-label="Restart Game"
+        >
           Restart Game
         </button>
       </div>
@@ -19,15 +23,19 @@ function Banner({ hasWon, onRestart, tries }) {
   }
 
   return (
-    <div class="sad banner">
+    <div className="sad banner">
       <p>
-        Sorry, the correct answer is <strong>LEARN</strong>.
+        Sorry, the correct answer is <strong>{answer}</strong>.
       </p>
-      <button className="reset-button" onClick={onRestart}>
+      <button
+        className="reset-button"
+        onClick={onRestart}
+        aria-label="Restart Game"
+      >
         Restart Game
       </button>
     </div>
   );
 }
 
-export default Banner;
+export default memo(Banner);
