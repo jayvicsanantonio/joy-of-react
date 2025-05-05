@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 function GuessRow({ slots = [] }) {
   return (
@@ -15,4 +15,4 @@ function GuessRow({ slots = [] }) {
   );
 }
 
-export default React.memo(GuessRow);
+export default memo(GuessRow);
