@@ -1,6 +1,12 @@
 import { memo } from 'react';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+function Banner({ hasWon, onRestart, guesses, answer }) {
+  const tries = guesses.length;
 
-function Banner({ hasWon, onRestart, tries, answer }) {
+  if (!(tries === NUM_OF_GUESSES_ALLOWED || hasWon)) {
+    return;
+  }
+
   if (hasWon) {
     return (
       <div className="happy banner">
