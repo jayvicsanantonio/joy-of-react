@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import Guess from '../Guess/Guess';
 import Banner from '../Banner/Banner';
 import FormInput from '../FormInput/FormInput';
+import Keyboard from '../Keyboard/Keyboard';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 
@@ -30,6 +31,7 @@ function Game() {
         setGuesses={setGuesses}
         answer={answer}
       />
+      <Keyboard guesses={guesses} />
       <Banner
         hasWon={hasWon}
         onRestart={onRestart}
